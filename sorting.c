@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:26:47 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/07 03:51:39 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/07 16:54:07 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	ft_sort_rev(t_list **stack_a, t_list **stack_b)
 
 void	ft_sort_three(t_list **stack_a)
 {
-	if ((*stack_a)->content > (*stack_a)->next->content &&\
+	if ((*stack_a)->content > (*stack_a)->next->content && \
 		(*stack_a)->content > (*stack_a)->next->next->content)
 		ft_rotate_abr(stack_a, NULL, 'a');
-	else if ((*stack_a)->next->content > (*stack_a)->content &&\
+	else if ((*stack_a)->next->content > (*stack_a)->content && \
 			(*stack_a)->next->content > (*stack_a)->next->next->content)
 		ft_reverse_rotate_abr(stack_a, NULL, 'a');
 	if ((*stack_a)->content > (*stack_a)->next->content)
@@ -61,12 +61,20 @@ void	ft_sort_five(t_list **stack_a, t_list **stack_b)
 
 void	ft_sort(t_list **stack_a, t_list **stack_b)
 {
-	(void)stack_b;
-	int *a;
-	a = ft_get_content(*stack_a);
+	int		*a;
+	size_t	i;
 
-	size_t i = 0;
-	while (i < ft_lstsize(*stack_a))
-		printf("%d\n", a[i++]);
+	a = ft_get_content(stack_a);
+	while (ft_get_min(*stack_a) != (*stack_a)->content)
+	{
+		i = 0;
+		while (a[i++] < ft_lstsize(*stack_a))
+		{
+			if ((*stack_a)->content != a[i])
+				ft_push_ab(stack_a, stack_b, 'b');
+			break;
+		}
+		// I'm here
+	}
+
 }
-

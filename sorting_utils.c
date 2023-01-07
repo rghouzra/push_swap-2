@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:29:18 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/07 02:39:49 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/07 16:39:27 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int	ft_is_sort_rev(t_list *stack)
 	return (1);
 }
 
-int ft_get_min(t_list *stack)
+int	ft_get_min(t_list *stack)
 {
-	int min;
+	int	min;
 
 	min = stack->content;
 	while (stack)

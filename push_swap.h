@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 22:59:31 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/07 03:51:22 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/07 16:40:01 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,13 @@ void		ft_sort_three(t_list **stack_a);
 void		ft_sort_five(t_list **stack_a, t_list **stack_b);
 void		ft_sort(t_list **stack_a, t_list **stack_b);
 int			ft_is_up_down(t_list *stack);
-
-int	*ft_lst_to_arr(t_list *stack);
-int ft_get_max(int *arr);
-int *ft_get_lis(t_list **stack);
-void	ft_free_stack(t_list **stack); // ba9i makhademta
-int	*ft_get_content(t_list *stack);
-void	set_index(t_list **stack);
+int			*ft_lst_to_arr(t_list *stack);
+int			ft_get_max(int *arr, t_list *stack);
+int			*ft_get_lis(t_list **stack);
+void		ft_free_stack(t_list **stack); // ba9i makhademta
+int			*ft_get_content(t_list **stack);
+void		set_index(t_list **stack);
+int			ft_get_index_of_max(int *arr, int max);
+void		best_move_lis(t_list **stack);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 03:18:23 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/07 03:53:55 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/07 16:35:24 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ int	*ft_lst_to_arr(t_list *stack)
 	return (arr);
 }
 
-int ft_get_max(int *arr)
+int	ft_get_max(int *arr, t_list *stack)
 {
-	int i;
-	int max;
+	size_t	i;
+	int		max;
 
 	i = 0;
 	max = arr[0];
-	while (arr[i])
+	while (i < ft_lstsize(stack))
 	{
 		if (arr[i] > max)
 			max = arr[i];
@@ -43,23 +43,13 @@ int ft_get_max(int *arr)
 	return (max);
 }
 
-void	best_move_lis(t_list **stack)
-{
-	if (ft_is_up_down(*stack))
-		while (ft_get_min(*stack) != (*stack)->content)
-			ft_rotate_abr(stack, NULL, 'a');
-	else
-		while (ft_get_min(*stack) != (*stack)->content)
-			ft_reverse_rotate_abr(stack, NULL, 'a');
-}
-
 int	*ft_get_lis(t_list **stack)
 {
-	int *lis;
-	int *index_lis;
-	int *arr;
-	size_t i;
-	size_t j;
+	int		*lis;
+	int		*index_lis;
+	int		*arr;
+	size_t	i;
+	size_t	j;
 
 	best_move_lis(stack);
 	arr = ft_lst_to_arr(*stack);
@@ -82,23 +72,36 @@ int	*ft_get_lis(t_list **stack)
 	return (free(arr), free(lis), index_lis);
 }
 
-int	*ft_get_content(t_list *stack)
+int	ft_get_index_of_max(int *arr, int max)
 {
-	int *arr;
-	int	*index_lis;
-	int	*content;
-	size_t i;
+	int	i;
 
-
-	content = malloc(sizeof(int) * ft_lstsize(stack));
-	index_lis = ft_get_lis(&stack);
-	arr = ft_lst_to_arr(stack);
-	content[0] = arr[ft_get_max(index_lis)];
 	i = 0;
-	// while (i < ft_lstsize(stack) - 1)
-	// {
-	// 	content[i + 1] = arr[index_lis[i]];
-	// 	i++;
-	// }
+	while (arr[i] != max)
+		i++;
+	return (i);
+}
+
+int	*ft_get_content(t_list **stack)
+{
+	int		*arr;
+	int		*index_lis;
+	int		*content;
+	size_t	i;
+	int		next_index;
+
+	content = malloc(sizeof(int) * ft_lstsize(*stack));
+	index_lis = ft_get_lis(stack);
+	arr = ft_lst_to_arr(*stack);
+	i = 0;
+	content[i] = \
+	arr[ft_get_index_of_max(index_lis, ft_get_max(index_lis, *stack))];
+	next_index = \
+	index_lis[ft_get_index_of_max(index_lis, ft_get_max(index_lis, *stack))];
+	while (++i < ft_lstsize(*stack))
+	{
+		content[i] = arr[next_index];
+		next_index = index_lis[next_index];
+	}
 	return (free(arr), free(index_lis), content);
 }

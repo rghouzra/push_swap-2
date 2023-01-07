@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:15:16 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/06 23:15:29 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/07 16:36:14 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ int	main(int ac, char **av)
 	// 	printf("good");
 	// else
 	// 	printf("bad");
-
-
+	
 	printf("\na\n");
 	while(stack_a)
 	{
