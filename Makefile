@@ -6,7 +6,7 @@
 #    By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 23:20:52 by bel-idri          #+#    #+#              #
-#    Updated: 2023/01/07 00:33:47 by bel-idri         ###   ########.fr        #
+#    Updated: 2023/01/07 19:03:09 by bel-idri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,7 @@ SRCS = main.c \
 	push_swap.c \
 	sorting.c \
 	sorting_utils.c \
-	ft_sort.c \
-	ft_sort_utils.c \
+	sorting_utils_2.c \
 	largest_increasing_sequence.c \
 
 OBJS = $(SRCS:.c=.o)

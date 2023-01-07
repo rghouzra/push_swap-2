@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:07:43 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/07 03:26:02 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/07 18:53:07 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_list	*ft_lstnew(int content)
 		return (NULL);
 	new->content = content;
 	new->index = -1;
+	new->found = 0;
 	new->next = NULL;
 	return (new);
 }

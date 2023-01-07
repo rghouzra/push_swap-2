@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:26:47 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/07 17:58:59 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/07 19:00:55 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,26 +62,8 @@ void	ft_sort_five(t_list **stack_a, t_list **stack_b)
 void	ft_sort(t_list **stack_a, t_list **stack_b)
 {
 	int		*a;
-	size_t	i;
-	int		count;
 
 	a = ft_get_content(stack_a);
-	count = 0;
-	ft_rotate_abr(stack_a, stack_b, 'a');
-	while (ft_get_min(*stack_a) != (*stack_a)->content)
-	{
-		i = 0;
-		while (i++ < ft_lstsize(*stack_a))
-		{
-			if ((*stack_a)->content != a[i])
-			{
-				count++;
-				ft_push_ab(stack_a, stack_b, 'b');
-			}
-		}
-		if (count == 0)
-				ft_rotate_abr(stack_a, stack_b, 'a');
-		count = 0;
-	}
-
+	ft_push_to_b(stack_a, stack_b, a);
 }
+
