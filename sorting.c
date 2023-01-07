@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:26:47 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/07 03:00:12 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/07 03:51:39 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_sort(t_list **stack_a, t_list **stack_b)
 {
 	(void)stack_b;
 	int *a;
-	a = ft_get_lis(stack_a);
+	a = ft_get_content(*stack_a);
 
 	size_t i = 0;
 	while (i < ft_lstsize(*stack_a))

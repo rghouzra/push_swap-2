@@ -25,6 +25,7 @@ SRCS = main.c \
 	sorting_utils.c \
 	ft_sort.c \
 	ft_sort_utils.c \
+	largest_increasing_sequence.c \
 
 OBJS = $(SRCS:.c=.o)
 
