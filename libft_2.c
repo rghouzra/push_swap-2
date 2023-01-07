@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft2.c                                           :+:      :+:    :+:   */
+/*   libft_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:07:23 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/06 23:07:33 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/07 00:21:15 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_strdup(char *s1)
 	return (s);
 }
 
-long long	my_atio(char *str, int i, int sign)
+long long	ft_my_atio(char *str, int i, int sign)
 {
 	size_t	res;
 	size_t	temp;

@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:19:43 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/06 23:19:45 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/07 00:21:02 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,9 @@ char	**ft_joinargv(char **av)
 	return (free(s), ss);
 }
 
-void	frees(t_list **stack)
-{
-	t_list	*temp;
 
-	temp = *stack;
-	while (*stack)
-	{
-		*stack = (*stack)->next;
-		free(temp);
-		temp = *stack;
-	}
-}
 
-void	free_tab(char **ss)
+void	ft_free_tab(char **ss)
 {
 	size_t	i;
 

@@ -6,7 +6,7 @@
 #    By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 23:20:52 by bel-idri          #+#    #+#              #
-#    Updated: 2023/01/06 23:29:25 by bel-idri         ###   ########.fr        #
+#    Updated: 2023/01/07 00:33:47 by bel-idri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,10 @@ SRCS = main.c \
 	parsing.c \
 	parsing_utils.c \
 	push_swap.c \
-	push_swap_utils.c \
-	ft_sorting.c \
-	ft_sorting_utils.c \
+	sorting.c \
+	sorting_utils.c \
+	ft_sort.c \
+	ft_sort_utils.c \
 
 OBJS = $(SRCS:.c=.o)
 

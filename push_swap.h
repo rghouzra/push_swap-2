@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 22:59:31 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/06 23:32:02 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/07 02:40:00 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-long long	my_atio(char *str, int i, int sign);
+long long	ft_my_atio(char *str, int i, int sign);
 int			ft_count_words(char *s, char c);
 long long	ft_atoi(char *str);
 size_t		ft_strlen(char *s);
@@ -57,17 +57,19 @@ int			ft_longer(char **av);
 int 		ft_duplicat(char **av);
 int			ft_parsing(t_list **stack_a, char **av);
 char		**ft_joinargv(char **av);
-void		frees(t_list **stack);
-void		free_tab(char **ss);
+void		ft_free_tab(char **ss);
 void		ft_push_swap(t_list **stack_a, t_list **stack_b);
 int 		ft_get_min(t_list *stack);
 int			ft_is_sort_rev(t_list *stack);
 int			ft_is_sort(t_list *stack);
 void		ft_sort_rev(t_list **stack_a, t_list **stack_b);
-void		ft_sort_three(t_list **stack_a, t_list **stack_b);
+void		ft_sort_three(t_list **stack_a);
 void		ft_sort_five(t_list **stack_a, t_list **stack_b);
 void		ft_sort(t_list **stack_a, t_list **stack_b);
-int			ft_is_up_down(t_list *stack, size_t i);
+int			ft_is_up_down(t_list *stack);
 
+int	*ft_lst_to_arr(t_list *stack);
+int ft_get_max_lis(int *lis, t_list *stack);
+int *ft_get_lis(t_list **stack);
 
 #endif

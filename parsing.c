@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:16:30 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/06 23:18:44 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/07 00:21:02 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,13 @@ int	ft_parsing(t_list **stack_a, char **av)
 	if (!ss)
 		return (0);
 	if (ft_digit(ss))
-		return (free_tab(ss), 0);
+		return (ft_free_tab(ss), 0);
 	if (ft_longer(ss))
-		return (free_tab(ss), 0);
+		return (ft_free_tab(ss), 0);
 	if (ft_duplicat(ss))
-		return (free_tab(ss), 0);
+		return (ft_free_tab(ss), 0);
 	i = 0;
 	while (ss[i])
 		ft_lstadd_back(stack_a, ft_lstnew(ft_atoi(ss[i++])));
-	return (free_tab(ss), 1);
+	return (ft_free_tab(ss), 1);
 }

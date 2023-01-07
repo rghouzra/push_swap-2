@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:07:07 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/06 23:07:09 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/07 00:21:15 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ long long	ft_atoi(char *str)
 	}
 	if (!str[i])
 		return (MAX + 1ull);
-	return (my_atio(str, i, sign));
+	return (ft_my_atio(str, i, sign));
 }
 
 size_t	ft_strlen(char *s)
