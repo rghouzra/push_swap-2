@@ -6,13 +6,13 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:29:18 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/07 20:31:38 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/08 16:20:44 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_is_up_down(t_list *stack)
+int	ft_is_up_down(t_list *stack, int num)
 {
 	t_list	*temp;
 	size_t	i;
@@ -21,7 +21,7 @@ int	ft_is_up_down(t_list *stack)
 	temp = stack;
 	while (stack)
 	{
-		if (ft_get_min(temp) == stack->content)
+		if (num == stack->content)
 		{
 			if (i <= ft_lstsize(temp) / 2)
 				return (1);
@@ -70,7 +70,7 @@ int	ft_get_min(t_list *stack)
 
 void	best_move_lis(t_list **stack)
 {
-	if (ft_is_up_down(*stack))
+	if (ft_is_up_down(*stack, ft_get_min(*stack)))
 		while (ft_get_min(*stack) != (*stack)->content)
 			ft_rotate_abr(stack, NULL, 'a');
 	else

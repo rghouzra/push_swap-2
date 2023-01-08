@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 00:07:55 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/07 21:14:37 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/08 17:01:30 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ void	ft_push_to_b(t_list **stack_a, t_list **stack_b, int *a)
 
 int	*ft_best_move_to_push_a(t_list **stack_a, t_list **stack_b)
 {
-	int	**steps_a;
-	int	**steps_b;
+	int	**steps;
 	size_t	i;
 	size_t	j;
 	t_list	*temp;
@@ -51,22 +50,31 @@ int	*ft_best_move_to_push_a(t_list **stack_a, t_list **stack_b)
 
 	temp = *stack_a;
 	temp1 = *stack_b;
-	steps_a = (int **)malloc(sizeof(int *) * ft_lstsize(*stack_b));
-	steps_b = (int **)malloc(sizeof(int *) * ft_lstsize(*stack_b));
+	steps = (int **)malloc(sizeof(int *) * ft_lstsize(*stack_b));
 	i = -1;
+
+	while (++i < ft_lstsize(*stack_b))
+		steps[i] = (int *)malloc(sizeof(int) * 2);
+	i = -1;
+
 	while (++i < ft_lstsize(*stack_b))
 	{
-		steps_a[i] = (int *)malloc(sizeof(int) * 2);
-		steps_b[i] = (int *)malloc(sizeof(int) * 2);
-	}
-	i = -1;
-	while (++i < ft_lstsize(*stack_b))
-	{
-		if (ft_is_up_down(temp1))
-			steps_a[i][0] = ft_up_steps(*stack_b, temp1->content);
+		if (ft_is_up_down(*stack_b,  temp1->content))
+			steps[i][0] = ft_up_steps(*stack_b, temp1->content);
 		else
-			steps_a[i][0] = ft_down_steps(*stack_b, temp1->content);
+			steps[i][0] = ft_down_steps(*stack_b, temp1->content);
+		temp1 = temp1->next;
 	}
+	// print steps_a
+	i = -1;
+	while (++i < ft_lstsize(*stack_b))
+	{
+		j = -1;
+		while (++j < 2)
+			printf("step[%zu][%zu] = %d --  ",i,j, steps[i][j]);
+		printf("\n");
+	}
+	return (0);
 }
 
 int	ft_up_steps(t_list *stack, int content)
@@ -88,6 +96,7 @@ int	ft_down_steps(t_list *stack, int content)
 {
 	size_t	i;
 
+	i = 0;
 	while (stack)
 	{
 		if (stack->content == content)
@@ -95,15 +104,22 @@ int	ft_down_steps(t_list *stack, int content)
 		stack = stack->next;
 		i++;
 	}
-	return (i + 1);
+	return (i * -1);
 }
 
-void	ft_push_to_a(t_list **stack_a, t_list **stack_b)
+// void	ft_push_to_a(t_list **stack_a, t_list **stack_b)
+// {
+
+// }
+
+// void	ft_rotate_a_b(t_list **stack_a, t_list **stack_b)
+// {
+
+// }
+
+int	ft_abs(int num)
 {
-
-}
-
-void	ft_rotate_a_b(t_list **stack_a, t_list **stack_b)
-{
-
+	if (num < 0)
+		return (num * -1);
+	return (num);
 }
