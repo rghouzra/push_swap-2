@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 22:59:31 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/08 16:23:19 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/08 17:33:21 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 typedef struct s_list
 {
 	int				content;
-	int				index;
 	int				found;
 	struct s_list	*next;
 }	t_list;
@@ -62,6 +61,7 @@ char		**ft_joinargv(char **av);
 void		ft_free_tab(char **ss);
 void		ft_push_swap(t_list **stack_a, t_list **stack_b);
 int 		ft_get_min(t_list *stack);
+int			ft_get_max(t_list *stack);
 int			ft_is_sort_rev(t_list *stack);
 int			ft_is_sort(t_list *stack);
 void		ft_sort_rev(t_list **stack_a, t_list **stack_b);
@@ -74,7 +74,6 @@ int			ft_get_max_lis(int *arr, t_list *stack);
 int			*ft_get_lis(t_list **stack);
 void		ft_free_stack(t_list **stack); // ba9i makhademta
 int			*ft_get_content(t_list **stack);
-void		set_index(t_list **stack);
 int			ft_get_index_of_max(int *arr, int max);
 void		best_move_lis(t_list **stack);
 void		ft_push_to_b(t_list **stack_a, t_list **stack_b, int *a);

@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:19:43 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/07 03:27:57 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/08 17:15:51 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,5 @@ void	ft_free_stack(t_list **stack)
 		tmp = (*stack)->next;
 		free(*stack);
 		*stack = tmp;
-	}
-}
-
-void	set_index(t_list **stack)
-{
-	t_list	*tmp;
-	int		i;
-
-	i = 0;
-	tmp = *stack;
-	while (tmp)
-	{
-		tmp->index = i++;
-		tmp = tmp->next;
 	}
 }

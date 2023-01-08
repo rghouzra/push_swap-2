@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 00:07:55 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/08 17:01:30 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/08 17:34:43 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ int	*ft_best_move_to_push_a(t_list **stack_a, t_list **stack_b)
 	size_t	j;
 	t_list	*temp;
 	t_list	*temp1;
+	t_list	*temp1_1;
 
 	temp = *stack_a;
 	temp1 = *stack_b;
 	steps = (int **)malloc(sizeof(int *) * ft_lstsize(*stack_b));
 	i = -1;
-
 	while (++i < ft_lstsize(*stack_b))
 		steps[i] = (int *)malloc(sizeof(int) * 2);
 	i = -1;
@@ -65,7 +65,51 @@ int	*ft_best_move_to_push_a(t_list **stack_a, t_list **stack_b)
 			steps[i][0] = ft_down_steps(*stack_b, temp1->content);
 		temp1 = temp1->next;
 	}
-	// print steps_a
+
+	i = -1;
+	j = -1;
+	temp1_1 = *stack_b;
+	while (++i < ft_lstsize(*stack_b))
+	{
+		while (++j < ft_lstsize(*stack_a) - 1)
+		{
+			if (ft_get_min(*stack_a) > temp1->content)
+			{
+				if (ft_is_up_down(*stack_a, ft_get_min(*stack_a)))
+					steps[i][1] = ft_up_steps(*stack_a, ft_get_min(*stack_a));
+				else
+					steps[i][1] = ft_down_steps(*stack_a, ft_get_min(*stack_a));
+				break;
+			}
+
+			else if (ft_get_max(*stack_a) > temp1->content)
+			{
+				if (ft_is_up_down(*stack_a, ft_get_max(*stack_a)))
+					steps[i][1] = ft_up_steps(*stack_a, ft_get_max(*stack_a));
+				else
+					steps[i][1] = ft_down_steps(*stack_a, ft_get_max(*stack_a));
+				break;
+			}
+
+			else if (temp->content < temp1->content && temp->next->content < temp1->content)
+			{
+				if (ft_is_up_down(*stack_a,  temp->content))
+					steps[i][1] = ft_up_steps(*stack_a, temp->next->content);
+				else
+					steps[i][1] = ft_down_steps(*stack_a, temp->next->content);
+				break;
+			}
+			temp = temp->next;
+		}
+		temp1 = temp1->next;
+	}
+
+
+
+
+
+
+	// print steps
 	i = -1;
 	while (++i < ft_lstsize(*stack_b))
 	{
