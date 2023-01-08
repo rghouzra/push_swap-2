@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 00:07:55 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/08 23:55:11 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/09 00:24:59 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,73 +40,125 @@ void	ft_push_to_b(t_list **stack_a, t_list **stack_b, int *a)
 	}
 }
 
-int	*ft_best_move_to_push_a(t_list **stack_a, t_list **stack_b)
+int	**ft_malloc_steps(t_list *stack_b)
 {
-	int	**steps;
+	size_t	i;
+	int		**steps;
+
+	i = -1;
+	steps = (int **)malloc(sizeof(int *) * ft_lstsize(stack_b));
+	while (++i < ft_lstsize(stack_b))
+		steps[i] = (int *)malloc(sizeof(int) * 3);
+	return (steps);
+}
+
+void	ft_free_steps(int **steps, size_t size) //
+{
+	size_t	i;
+
+	i = -1;
+	while (++i < size)
+		free(steps[i]);
+	free(steps);
+}
+
+void	ft_steps_b(t_list *stack_b, int **steps)
+{
+	size_t	i;
+	t_list	*temp;
+
+	temp = stack_b;
+	i = -1;
+	while (++i < ft_lstsize(stack_b))
+	{
+		if (ft_is_up_down(stack_b,  temp->content))
+			steps[i][0] = ft_up_steps(stack_b, temp->content);
+		else
+			steps[i][0] = ft_down_steps(stack_b, temp->content);
+		temp = temp->next;
+	}
+}
+
+int	ft_compare_max_min(int i, t_list *stack_a, t_list *temp1 , int **steps)
+{
+	if (ft_get_min(stack_a) > temp1->content)
+	{
+		if (ft_is_up_down(stack_a, ft_get_min(stack_a)))
+			steps[i][1] = ft_up_steps(stack_a, ft_get_min(stack_a));
+		else
+			steps[i][1] = ft_down_steps(stack_a, ft_get_min(stack_a));
+		return (1);
+	}
+	else if (ft_get_max(stack_a) < temp1->content)
+	{
+		if (ft_is_up_down(stack_a, ft_get_min(stack_a)))
+			steps[i][1] = ft_up_steps(stack_a, ft_get_min(stack_a));
+		else
+			steps[i][1] = ft_down_steps(stack_a, ft_get_min(stack_a));
+		return (1);
+	}
+	return (0);
+}
+
+
+void	ft_steps_a(t_list *stack_a, t_list *stack_b, int **steps)
+{
 	size_t	i;
 	size_t	j;
 	t_list	*temp;
 	t_list	*temp1;
 
-	temp = *stack_a;
-	temp1 = *stack_b;
-	steps = (int **)malloc(sizeof(int *) * ft_lstsize(*stack_b));
+	temp = stack_a;
+	temp1 = stack_b;
 	i = -1;
-	while (++i < ft_lstsize(*stack_b))
-		steps[i] = (int *)malloc(sizeof(int) * 2);
-	i = -1;
-
-	while (++i < ft_lstsize(*stack_b))
-	{
-		if (ft_is_up_down(*stack_b,  temp1->content))
-			steps[i][0] = ft_up_steps(*stack_b, temp1->content);
-		else
-			steps[i][0] = ft_down_steps(*stack_b, temp1->content);
-		temp1 = temp1->next;
-	}
-
-	i = -1;
-	temp1 = *stack_b;
-	while (++i < ft_lstsize(*stack_b))
+	while (++i < ft_lstsize(stack_b))
 	{
 		j = -1;
-		temp = *stack_a;
-		while (++j < ft_lstsize(*stack_a) - 1)
+		while (++j < ft_lstsize(stack_a) - 1)
 		{
-			if (ft_get_min(*stack_a) > temp1->content)
-			{
-				if (ft_is_up_down(*stack_a, ft_get_min(*stack_a)))
-					steps[i][1] = ft_up_steps(*stack_a, ft_get_min(*stack_a));
-				else
-					steps[i][1] = ft_down_steps(*stack_a, ft_get_min(*stack_a));
+			if (ft_compare_max_min(i, stack_a, temp1, steps))
 				break;
-			}
-			else if (ft_get_max(*stack_a) < temp1->content)
+			if (temp->content < temp1->content && temp->next->content > temp1->content)
 			{
-				if (ft_is_up_down(*stack_a, ft_get_min(*stack_a)))
-					steps[i][1] = ft_up_steps(*stack_a, ft_get_min(*stack_a));
+				if (ft_is_up_down(stack_a,  temp->content))
+					steps[i][1] = ft_up_steps(stack_a, temp->next->content);
 				else
-					steps[i][1] = ft_down_steps(*stack_a, ft_get_min(*stack_a));
-				break;
-			}
-			else if (temp->content < temp1->content && temp->next->content > temp1->content)
-			{
-				if (ft_is_up_down(*stack_a,  temp->content))
-					steps[i][1] = ft_up_steps(*stack_a, temp->next->content);
-				else
-					steps[i][1] = ft_down_steps(*stack_a, temp->next->content);
+					steps[i][1] = ft_down_steps(stack_a, temp->next->content);
 				break;
 			}
 			temp = temp->next;
 		}
 		temp1 = temp1->next;
 	}
+}
+
+int *ft_samller_steps(int **steps, size_t size);
+{
+	int found;
+	size_t	i;
+
+	found = 0;
+	i = -1;
+	while (++i < size)
+	{
+
+	}
+}
+
+int	*ft_best_move_to_push_a(t_list **stack_a, t_list **stack_b)
+{
+	int	**steps;
+
+	steps = ft_malloc_steps(*stack_b);
+	ft_steps_b(*stack_b, steps);
+	ft_steps_a(*stack_a, *stack_b, steps);
 
 
 
 
 
-
+	size_t i;
+	size_t j;
 	// print steps
 	i = -1;
 	while (++i < ft_lstsize(*stack_b))
