@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 00:07:55 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/09 03:30:20 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/09 05:35:12 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,9 +117,14 @@ void	ft_steps_a(t_list *stack_a, t_list *stack_b, int **steps)
 		while (++j < ft_lstsize(stack_a) - 1)
 		{
 			if (ft_compare_max_min(i, stack_a, temp1, steps))
+			{
+				printf("hna bzzzzf compare\n");
+
 				break;
+			}
 			if (temp->content < temp1->content && temp->next->content > temp1->content)
 			{
+				printf("hna bzf\n");
 				if (ft_is_up_down(stack_a,  temp->content))
 					steps[i][1] = ft_up_steps(stack_a, temp->next->content);
 				else
@@ -139,10 +144,13 @@ int *ft_samller_steps(int **steps, size_t size)
 	size_t	i;
 
 	smaller = (int *)malloc(sizeof(int) * 2);
-	i = -1;
+	i = 0;
 	min = MAX;
-	while (++i < size)
+	while (i < size)
 	{
+
+		printf(" 1 ---- --0=%d--1=%d--2=%d--\n",steps[i][0],steps[i][1],steps[i][2]); ///
+
 		if ((steps[i][0] >= 0 && steps[i][1] >= 0) || (steps[i][0] <= 0 && steps[i][1] <= 0))
 		{
 			if (ft_abs(steps[i][0]) >= ft_abs(steps[i][1]))
@@ -152,8 +160,11 @@ int *ft_samller_steps(int **steps, size_t size)
 		}
 		else
 			steps[i][2] = ft_abs(steps[i][0]) + ft_abs(steps[i][1]);
+		printf(" 2 ---- --0=%d--1=%d--2=%d--\n",steps[i][0],steps[i][1],steps[i][2]); ///
+
 		if(steps[i][2] < min)
 			min = steps[i][2];
+		i++;
 	}
 	return ft_find_samller_steps(steps, size, min, smaller);
 }
@@ -183,6 +194,8 @@ void	ft_best_move_to_push_a(t_list **stack_a, t_list **stack_b)
 
 	while(ft_lstsize(*stack_b))
 	{
+
+
 		steps = ft_malloc_steps(*stack_b);
 		ft_steps_b(*stack_b, steps);
 		ft_steps_a(*stack_a, *stack_b, steps);

@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:15:16 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/09 03:26:56 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/09 04:32:34 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int ac, char **av)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (ac == 1)
-		return (1);
+		return (1); // promot back
 	if (!ft_parsing(&stack_a, av))
 		return (write(1, "Error\n", 6), 1);
 	ft_push_swap(&stack_a, &stack_b);
