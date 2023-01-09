@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 22:59:31 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/09 03:16:38 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/09 03:27:35 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void		best_move_lis(t_list **stack);
 
 
 void	ft_push_to_b(t_list **stack_a, t_list **stack_b, int *a);
-void	*ft_best_move_to_push_a(t_list **stack_a, t_list **stack_b);
+void	ft_best_move_to_push_a(t_list **stack_a, t_list **stack_b);
 int	ft_up_steps(t_list *stack, int content);
 int	ft_down_steps(t_list *stack, int content);
 int	ft_abs(int num);

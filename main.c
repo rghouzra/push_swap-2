@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:15:16 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/08 16:05:42 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/09 03:26:56 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ int	main(int ac, char **av)
 	// else
 	// 	printf("bad");
 
-	printf("\na\n");
-	while(stack_a)
-	{
-		printf("%d\n",stack_a->content);
-		stack_a = stack_a->next;
-	}
+	// printf("\na\n");
+	// while(stack_a)
+	// {
+	// 	printf("%d\n",stack_a->content);
+	// 	stack_a = stack_a->next;
+	// }
 
-	printf("\nb\n");
-	while(stack_b)
-	{
-		printf("%d\n",stack_b->content);
-		stack_b = stack_b->next;
-	}
+	// printf("\nb\n");
+	// while(stack_b)
+	// {
+	// 	printf("%d\n",stack_b->content);
+	// 	stack_b = stack_b->next;
+	// }
 	return (0);
 }

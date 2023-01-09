@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 00:07:55 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/09 03:16:26 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/09 03:30:20 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,6 @@ int *ft_samller_steps(int **steps, size_t size)
 	smaller = (int *)malloc(sizeof(int) * 2);
 	i = -1;
 	min = MAX;
-	printf("size = %zu\n",size);
 	while (++i < size)
 	{
 		if ((steps[i][0] >= 0 && steps[i][1] >= 0) || (steps[i][0] <= 0 && steps[i][1] <= 0))
@@ -177,7 +176,7 @@ int	*ft_find_samller_steps(int **steps, size_t size, int min, int *smaller)
 }
 
 
-void	*ft_best_move_to_push_a(t_list **stack_a, t_list **stack_b)
+void	ft_best_move_to_push_a(t_list **stack_a, t_list **stack_b)
 {
 	int	**steps;
 	int *one_step;
