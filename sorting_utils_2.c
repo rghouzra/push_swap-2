@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 00:07:55 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/09 05:35:12 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/10 00:19:35 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,11 @@ void	ft_steps_a(t_list *stack_a, t_list *stack_b, int **steps)
 	t_list	*temp;
 	t_list	*temp1;
 
+	i = j = -1;
+
+	while (++i < ft_lstsize(stack_b))
+		steps[i][1] = 0;
+
 	temp1 = stack_b;
 	i = -1;
 	while (++i < ft_lstsize(stack_b))
@@ -118,23 +123,37 @@ void	ft_steps_a(t_list *stack_a, t_list *stack_b, int **steps)
 		{
 			if (ft_compare_max_min(i, stack_a, temp1, steps))
 			{
-				printf("hna bzzzzf compare\n");
-
 				break;
 			}
 			if (temp->content < temp1->content && temp->next->content > temp1->content)
 			{
-				printf("hna bzf\n");
 				if (ft_is_up_down(stack_a,  temp->content))
 					steps[i][1] = ft_up_steps(stack_a, temp->next->content);
 				else
 					steps[i][1] = ft_down_steps(stack_a, temp->next->content);
 				break;
 			}
+			///
+			///
+			///
+			///
+			// if (!check)
+			// {
+			// 	if (ft_is_up_down(stack_a,  ft_get_min(stack_a)))
+			// 		steps[i][1] = ft_up_steps(stack_a, ft_get_min(stack_a));
+			// 	else
+			// 		steps[i][1] = ft_down_steps(stack_a, ft_get_min(stack_a));
+			// 	break;
+			// }
 			temp = temp->next;
 		}
+		// printf("steps[0][1] = %d\n",steps[0][1]);
+		// printf("steps[1][1] = %d\n",steps[1][1]);
+
+
 		temp1 = temp1->next;
 	}
+
 }
 
 int *ft_samller_steps(int **steps, size_t size)
@@ -149,8 +168,6 @@ int *ft_samller_steps(int **steps, size_t size)
 	while (i < size)
 	{
 
-		printf(" 1 ---- --0=%d--1=%d--2=%d--\n",steps[i][0],steps[i][1],steps[i][2]); ///
-
 		if ((steps[i][0] >= 0 && steps[i][1] >= 0) || (steps[i][0] <= 0 && steps[i][1] <= 0))
 		{
 			if (ft_abs(steps[i][0]) >= ft_abs(steps[i][1]))
@@ -160,7 +177,6 @@ int *ft_samller_steps(int **steps, size_t size)
 		}
 		else
 			steps[i][2] = ft_abs(steps[i][0]) + ft_abs(steps[i][1]);
-		printf(" 2 ---- --0=%d--1=%d--2=%d--\n",steps[i][0],steps[i][1],steps[i][2]); ///
 
 		if(steps[i][2] < min)
 			min = steps[i][2];
