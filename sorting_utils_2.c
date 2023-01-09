@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 00:07:55 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/09 00:24:59 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/09 03:16:26 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	**ft_malloc_steps(t_list *stack_b)
 	return (steps);
 }
 
-void	ft_free_steps(int **steps, size_t size) //
+void	ft_free_steps(int **steps, size_t size)
 {
 	size_t	i;
 
@@ -108,12 +108,12 @@ void	ft_steps_a(t_list *stack_a, t_list *stack_b, int **steps)
 	t_list	*temp;
 	t_list	*temp1;
 
-	temp = stack_a;
 	temp1 = stack_b;
 	i = -1;
 	while (++i < ft_lstsize(stack_b))
 	{
 		j = -1;
+		temp = stack_a;
 		while (++j < ft_lstsize(stack_a) - 1)
 		{
 			if (ft_compare_max_min(i, stack_a, temp1, steps))
@@ -132,43 +132,125 @@ void	ft_steps_a(t_list *stack_a, t_list *stack_b, int **steps)
 	}
 }
 
-int *ft_samller_steps(int **steps, size_t size);
+int *ft_samller_steps(int **steps, size_t size)
 {
-	int found;
+	int *smaller;
+	int min;
 	size_t	i;
 
-	found = 0;
+	smaller = (int *)malloc(sizeof(int) * 2);
 	i = -1;
+	min = MAX;
+	printf("size = %zu\n",size);
 	while (++i < size)
 	{
-
+		if ((steps[i][0] >= 0 && steps[i][1] >= 0) || (steps[i][0] <= 0 && steps[i][1] <= 0))
+		{
+			if (ft_abs(steps[i][0]) >= ft_abs(steps[i][1]))
+				steps[i][2] = ft_abs(steps[i][0]);
+			else
+				steps[i][2] = ft_abs(steps[i][1]);
+		}
+		else
+			steps[i][2] = ft_abs(steps[i][0]) + ft_abs(steps[i][1]);
+		if(steps[i][2] < min)
+			min = steps[i][2];
 	}
+	return ft_find_samller_steps(steps, size, min, smaller);
 }
 
-int	*ft_best_move_to_push_a(t_list **stack_a, t_list **stack_b)
+int	*ft_find_samller_steps(int **steps, size_t size, int min, int *smaller)
+{
+	size_t	i;
+
+	i = -1;
+
+	while (++i < size)
+	{
+		if (steps[i][2] == min)
+		{
+			smaller[0] = steps[i][0];
+			smaller[1] = steps[i][1];
+		}
+	}
+	return (smaller);
+}
+
+
+void	*ft_best_move_to_push_a(t_list **stack_a, t_list **stack_b)
 {
 	int	**steps;
+	int *one_step;
 
-	steps = ft_malloc_steps(*stack_b);
-	ft_steps_b(*stack_b, steps);
-	ft_steps_a(*stack_a, *stack_b, steps);
-
-
-
-
-
-	size_t i;
-	size_t j;
-	// print steps
-	i = -1;
-	while (++i < ft_lstsize(*stack_b))
+	while(ft_lstsize(*stack_b))
 	{
-		j = -1;
-		while (++j < 2)
-			printf("step[%zu][%zu] = %d --  ",i,j, steps[i][j]);
-		printf("\n");
+		steps = ft_malloc_steps(*stack_b);
+		ft_steps_b(*stack_b, steps);
+		ft_steps_a(*stack_a, *stack_b, steps);
+		one_step = ft_samller_steps(steps, ft_lstsize(*stack_b));
+		ft_free_steps(steps, ft_lstsize(*stack_b));
+
+		while (one_step[0] < 0 && one_step[1] < 0)
+		{
+			ft_reverse_rotate_abr(stack_a, stack_b, 'r');
+			one_step[0]++;
+			one_step[1]++;
+		}
+		while (one_step[0] > 0 && one_step[1] > 0)
+		{
+			ft_rotate_abr(stack_a, stack_b, 'r');
+			one_step[0]--;
+			one_step[1]--;
+		}
+
+		while (one_step[0] > 0)
+		{
+			ft_rotate_abr(stack_a, stack_b, 'b');
+			one_step[0]--;
+		}
+		while (one_step[0] < 0)
+		{
+			ft_reverse_rotate_abr(stack_a, stack_b, 'b');
+			one_step[0]++;
+		}
+
+		while (one_step[1] > 0)
+		{
+			ft_rotate_abr(stack_a, stack_b, 'a');
+			one_step[1]--;
+		}
+		while (one_step[1] < 0)
+		{
+			ft_reverse_rotate_abr(stack_a, stack_b, 'a');
+			one_step[1]++;
+		}
+
+		ft_push_ab(stack_a, stack_b, 'a');
+		free(one_step);
 	}
-	return (0);
+
+
+	if (ft_is_up_down(*stack_a, ft_get_min(*stack_a)))
+		while (ft_get_min(*stack_a) != (*stack_a)->content)
+			ft_rotate_abr(stack_a, stack_b, 'a');
+	else
+		while (ft_get_min(*stack_a) != (*stack_a)->content)
+			ft_reverse_rotate_abr(stack_a, stack_b, 'a');
+
+
+
+
+	// size_t i;
+	// size_t j;
+	// // print steps
+	// i = -1;
+	// while (++i < ft_lstsize(*stack_b))
+	// {
+	// 	j = -1;
+	// 	while (++j < 2)
+	// 		printf("step[%zu][%zu] = %d --  ",i,j, steps[i][j]);
+	// 	printf("\n");
+	// }
 }
 
 int	ft_up_steps(t_list *stack, int content)
