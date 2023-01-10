@@ -6,10 +6,9 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 20:10:48 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/10 20:46:44 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/10 23:16:27 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef PUSH_SWAP_BONUS_H
 # define PUSH_SWAP_BONUS_H
@@ -108,5 +107,8 @@ void		ft_do_moves_1(t_list **stack_a, t_list **stack_b, int *one_step);
 void		ft_init_0(int **steps, size_t num);
 void		ft_compare_next_prev(int i, t_list *stack_a, \
 			t_list *temp, int **steps);
+int			push_swap_bonus(t_list **stack_a, t_list **stack_b);
+int			ft_check_1(char *s, t_list **stack_a, t_list **stack_b);
+int			ft_check_2(char *s, t_list **stack_a, t_list **stack_b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 20:34:52 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/10 20:52:29 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/10 23:12:35 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ void	ft_swap_abs_b(t_list **stack_a, t_list **stack_b, char c)
 	if (c == 'b')
 		ft_swap(stack_b);
 	if (c == 's')
-		ft_swap(stack_a) && ft_swap(stack_b);
+	{
+		ft_swap(stack_a);
+		ft_swap(stack_b);
+	}
 }
 
 void	ft_push_ab_b(t_list **stack_a, t_list **stack_b, char c)
@@ -36,7 +39,6 @@ void	ft_rotate_abr_b(t_list **stack_a, t_list **stack_b, char c)
 		ft_rotate(stack_a);
 	if (c == 'b')
 		ft_rotate(stack_b);
-
 	if (c == 'r')
 	{
 		ft_rotate(stack_a);
