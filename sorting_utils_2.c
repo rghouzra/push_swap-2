@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 00:07:55 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/10 19:25:20 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/10 19:57:39 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ft_steps_b(t_list *stack_b, int **steps)
 	}
 }
 
-int	ft_compare_max_min(int i, t_list *stack_a, t_list *temp1, int **steps)
+void	ft_compare_max_min(int i, t_list *stack_a, t_list *temp1, int **steps)
 {
 	if (ft_get_min(stack_a) > temp1->content)
 	{
@@ -77,7 +77,6 @@ int	ft_compare_max_min(int i, t_list *stack_a, t_list *temp1, int **steps)
 			steps[i][1] = ft_up_steps(stack_a, ft_get_min(stack_a));
 		else
 			steps[i][1] = ft_down_steps(stack_a, ft_get_min(stack_a));
-		return (1);
 	}
 	else if (ft_get_max(stack_a) < temp1->content)
 	{
@@ -85,9 +84,7 @@ int	ft_compare_max_min(int i, t_list *stack_a, t_list *temp1, int **steps)
 			steps[i][1] = ft_up_steps(stack_a, ft_get_min(stack_a));
 		else
 			steps[i][1] = ft_down_steps(stack_a, ft_get_min(stack_a));
-		return (1);
 	}
-	return (0);
 }
 
 void	ft_steps_a(t_list *stack_a, t_list *stack_b, int **steps)
@@ -106,17 +103,10 @@ void	ft_steps_a(t_list *stack_a, t_list *stack_b, int **steps)
 		temp = stack_a;
 		while (++j < ft_lstsize(stack_a) - 1)
 		{
-			if (ft_compare_max_min(i, stack_a, temp1, steps))
-				break ;
+			ft_compare_max_min(i, stack_a, temp1, steps);
 			if (temp->content < temp1->content && \
 				temp->next->content > temp1->content)
-			{
-				if (ft_is_up_down(stack_a, temp->content))
-					steps[i][1] = ft_up_steps(stack_a, temp->next->content);
-				else
-					steps[i][1] = ft_down_steps(stack_a, temp->next->content);
-				break ;
-			}
+				ft_compare_next_prev(i, stack_a, temp, steps);
 			temp = temp->next;
 		}
 		temp1 = temp1->next;

@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 18:50:27 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/10 18:56:11 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/10 19:34:05 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	best_move_lis(t_list **stack)
 			ft_reverse_rotate_abr(stack, NULL, 'a');
 }
 
-int *ft_samller_steps(int **steps, size_t size)
+int	*ft_samller_steps(int **steps, size_t size)
 {
-	int *smaller;
-	int min;
+	int		*smaller;
+	int		min;
 	size_t	i;
 
 	smaller = (int *)malloc(sizeof(int) * 2);
@@ -33,8 +33,8 @@ int *ft_samller_steps(int **steps, size_t size)
 	min = MAX;
 	while (i < size)
 	{
-
-		if ((steps[i][0] >= 0 && steps[i][1] >= 0) || (steps[i][0] <= 0 && steps[i][1] <= 0))
+		if ((steps[i][0] >= 0 && steps[i][1] >= 0) || \
+			(steps[i][0] <= 0 && steps[i][1] <= 0))
 		{
 			if (ft_abs(steps[i][0]) >= ft_abs(steps[i][1]))
 				steps[i][2] = ft_abs(steps[i][0]);
@@ -43,12 +43,11 @@ int *ft_samller_steps(int **steps, size_t size)
 		}
 		else
 			steps[i][2] = ft_abs(steps[i][0]) + ft_abs(steps[i][1]);
-
-		if(steps[i][2] < min)
+		if (steps[i][2] < min)
 			min = steps[i][2];
 		i++;
 	}
-	return ft_find_samller_steps(steps, size, min, smaller);
+	return (ft_find_samller_steps(steps, size, min, smaller));
 }
 
 int	*ft_find_samller_steps(int **steps, size_t size, int min, int *smaller)
@@ -56,7 +55,6 @@ int	*ft_find_samller_steps(int **steps, size_t size, int min, int *smaller)
 	size_t	i;
 
 	i = -1;
-
 	while (++i < size)
 	{
 		if (steps[i][2] == min)
