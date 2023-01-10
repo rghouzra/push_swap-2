@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:07:07 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/07 00:21:15 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/10 20:25:24 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ long long	ft_atoi(char *str)
 	return (ft_my_atio(str, i, sign));
 }
 
-size_t	ft_strlen(char *s)
+size_t	ft_strlen_m(char *s)
 {
 	size_t	x;
 
@@ -65,7 +65,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	if (start >= ft_strlen(s))
+	if (start >= ft_strlen_m(s))
 	{
 		str = (char *)malloc(sizeof(char));
 		if (!str)
@@ -73,8 +73,8 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 		return (str);
 	}
 	i = 0;
-	if (len > ft_strlen(s) - start)
-		len = ft_strlen(s) - start;
+	if (len > ft_strlen_m(s) - start)
+		len = ft_strlen_m(s) - start;
 	str = (char *)malloc((len + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
@@ -84,7 +84,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	return (str);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_m(char *s1, char *s2)
 {
 	char	*str;
 	size_t	i;
@@ -93,15 +93,15 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!s2)
 		return (NULL);
 	if (!s1)
-		s1 = ft_strdup("");
-	str = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+		s1 = ft_strdup_m("");
+	str = (char *)malloc((ft_strlen_m(s1) + ft_strlen_m(s2) + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
 	i = -1;
 	j = -1;
-	while (++i < ft_strlen(s1))
+	while (++i < ft_strlen_m(s1))
 		str[i] = s1[i];
-	while (++j < ft_strlen(s2))
+	while (++j < ft_strlen_m(s2))
 	{
 		str[i] = s2[j];
 		i++;

@@ -6,19 +6,19 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:07:23 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/10 18:37:29 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/10 20:26:21 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	*ft_strdup(char *s1)
+char	*ft_strdup_m(char *s1)
 {
 	char	*s;
 	int		i;
 
 	i = 0;
-	s = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char));
+	s = (char *)malloc((ft_strlen_m(s1) + 1) * sizeof(char));
 	if (!s)
 		return (NULL);
 	while (s1[i])
@@ -62,7 +62,7 @@ int	ft_count_words(char *s, char c)
 
 	index = 0;
 	counter = 0;
-	if (ft_strlen(s) == 0)
+	if (ft_strlen_m(s) == 0)
 		return (0);
 	while (s[index] == c)
 		index++;

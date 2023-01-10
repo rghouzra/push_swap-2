@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/06 22:59:31 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/10 20:25:48 by bel-idri         ###   ########.fr       */
+/*   Created: 2023/01/10 20:10:48 by bel-idri          #+#    #+#             */
+/*   Updated: 2023/01/10 20:46:44 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
 
+# define BUFFER_SIZE 4
 # define MAX INT_MAX
 # define MIN INT_MIN
 
@@ -27,13 +29,22 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+int			ft_strncmp(char *s1, char *s2, size_t n);
+char		*get_next_line(int fd);
+char		*read_newline(int fd, char *my_backup);
+char		*extract_newline(char **my_backup);
+int			is_newline(char *s);
+char		*extract_after_newline(char *my_backup);
 long long	ft_my_atio(char *str, int i, int sign);
 int			ft_count_words(char *s, char c);
 long long	ft_atoi(char *str);
+size_t		ft_strlen(char *s);
 size_t		ft_strlen_m(char *s);
 char		**ft_split(char *s, char c);
 char		*ft_substr(char *s, unsigned int start, size_t len);
+char		*ft_strjoin(char *s1, char *s2);
 char		*ft_strjoin_m(char *s1, char *s2);
+char		*ft_strdup(char *s1);
 char		*ft_strdup_m(char *s1);
 void		ft_free(char **str);
 char		**ft_my_split(char *s, char c, int start, int end);
@@ -44,12 +55,16 @@ size_t		ft_lstsize(t_list *lst);
 void		ft_lstadd_front(t_list **lst, t_list *new);
 int			ft_swap(t_list **stack);
 void		ft_swap_abs(t_list **stack_a, t_list **stack_b, char c);
+void		ft_swap_abs_b(t_list **stack_a, t_list **stack_b, char c);
 int			ft_push(t_list **stack_recv, t_list **stack_givn);
 void		ft_push_ab(t_list **stack_a, t_list **stack_b, char c);
+void		ft_push_ab_b(t_list **stack_a, t_list **stack_b, char c);
 int			ft_rotate(t_list **stack);
 void		ft_rotate_abr(t_list **stack_a, t_list **stack_b, char c);
-void		ft_reverse_rotate_abr(t_list **stack_a, t_list **stack_b, char c);
+void		ft_rotate_abr_b(t_list **stack_a, t_list **stack_b, char c);
 int			ft_reverse_rotate(t_list **stack);
+void		ft_reverse_rotate_abr(t_list **stack_a, t_list **stack_b, char c);
+void		ft_reverse_rotate_abr_b(t_list **stack_a, t_list **stack_b, char c);
 int			ft_onlyspaces(char *av);
 int			ft_digit(char **av);
 int			ft_longer(char **av);
