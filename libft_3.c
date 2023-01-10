@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:07:43 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/08 17:16:02 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/11 00:08:03 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_list	*ft_lstlast(t_list *lst)
 	return (lst);
 }
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *neww)
 {
 	t_list	*l;
 
@@ -44,13 +44,13 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		return ;
 	if (!*lst)
 	{
-		*lst = new;
+		*lst = neww;
 		return ;
 	}
-	if (!new)
+	if (!neww)
 		return ;
 	l = ft_lstlast(*lst);
-	l->next = new;
+	l->next = neww;
 }
 
 size_t	ft_lstsize(t_list *lst)
@@ -66,11 +66,11 @@ size_t	ft_lstsize(t_list *lst)
 	return (i);
 }
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *neww)
 {
-	if (!new)
+	if (!neww)
 		return ;
 	if (lst)
-		new->next = *lst;
-	*lst = new;
+		neww->next = *lst;
+	*lst = neww;
 }

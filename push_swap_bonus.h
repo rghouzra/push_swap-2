@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 20:10:48 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/10 23:42:24 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/11 00:07:31 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ void		ft_free(char **str);
 char		**ft_my_split(char *s, char c, int start, int end);
 t_list		*ft_lstnew(int content);
 t_list		*ft_lstlast(t_list *lst);
-void		ft_lstadd_back(t_list **lst, t_list *new);
+void		ft_lstadd_back(t_list **lst, t_list *neww);
 size_t		ft_lstsize(t_list *lst);
-void		ft_lstadd_front(t_list **lst, t_list *new);
+void		ft_lstadd_front(t_list **lst, t_list *neww);
 int			ft_swap(t_list **stack);
 void		ft_swap_abs(t_list **stack_a, t_list **stack_b, char c);
 void		ft_swap_abs_b(t_list **stack_a, t_list **stack_b, char c);
