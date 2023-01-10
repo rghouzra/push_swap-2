@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 22:59:31 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/10 20:25:48 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/10 23:40:35 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ typedef struct s_list
 long long	ft_my_atio(char *str, int i, int sign);
 int			ft_count_words(char *s, char c);
 long long	ft_atoi(char *str);
-size_t		ft_strlen_m(char *s);
+size_t		ft_strlen(char *s);
 char		**ft_split(char *s, char c);
 char		*ft_substr(char *s, unsigned int start, size_t len);
-char		*ft_strjoin_m(char *s1, char *s2);
-char		*ft_strdup_m(char *s1);
+char		*ft_strjoin(char *s1, char *s2);
+char		*ft_strdup(char *s1);
 void		ft_free(char **str);
 char		**ft_my_split(char *s, char c, int start, int end);
 t_list		*ft_lstnew(int content);

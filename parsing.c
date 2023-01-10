@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:16:30 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/10 20:24:49 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/10 23:40:35 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	ft_onlyspaces(char *av)
 			c++;
 		i++;
 	}
-	if (ft_strlen_m(av) == c)
+	if (ft_strlen(av) == c)
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:19:43 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/10 20:25:27 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/10 23:39:15 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	**ft_joinargv(char **av)
 	size_t	i;
 
 	i = 1;
-	s = ft_strdup_m(" ");
+	s = ft_strdup(" ");
 	while (av[i])
 	{
 		if (av[i][0] == '\0' || ft_onlyspaces(av[i]))
@@ -28,8 +28,8 @@ char	**ft_joinargv(char **av)
 				free(s);
 			return (NULL);
 		}
-		s = ft_strjoin_m(s, " ");
-		s = ft_strjoin_m(s, av[i++]);
+		s = ft_strjoin(s, " ");
+		s = ft_strjoin(s, av[i++]);
 	}
 	if (!s)
 		return (NULL);

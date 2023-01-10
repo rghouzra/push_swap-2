@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 20:09:39 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/10 23:13:19 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/10 23:49:20 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	main(int ac, char **av)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	char	*s;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -32,5 +31,7 @@ int	main(int ac, char **av)
 			write(1, "KO\n", 3);
 		return (0);
 	}
+	ft_free_stack(&stack_a);
+	ft_free_stack(&stack_b);
 	return (1);
 }
