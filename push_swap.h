@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 22:59:31 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/09 03:27:35 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/10 19:22:01 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-
-# include <stdio.h>
 
 # define MAX INT_MAX
 # define MIN INT_MIN
@@ -55,12 +53,12 @@ int			ft_reverse_rotate(t_list **stack);
 int			ft_onlyspaces(char *av);
 int			ft_digit(char **av);
 int			ft_longer(char **av);
-int 		ft_duplicat(char **av);
+int			ft_duplicat(char **av);
 int			ft_parsing(t_list **stack_a, char **av);
 char		**ft_joinargv(char **av);
 void		ft_free_tab(char **ss);
 void		ft_push_swap(t_list **stack_a, t_list **stack_b);
-int 		ft_get_min(t_list *stack);
+int			ft_get_min(t_list *stack);
 int			ft_get_max(t_list *stack);
 int			ft_is_sort_rev(t_list *stack);
 int			ft_is_sort(t_list *stack);
@@ -72,21 +70,26 @@ int			ft_is_up_down(t_list *stack, int num);
 int			*ft_lst_to_arr(t_list *stack);
 int			ft_get_max_lis(int *arr, t_list *stack);
 int			*ft_get_lis(t_list **stack);
-void		ft_free_stack(t_list **stack); // ba9i makhademta
+void		ft_free_stack(t_list **stack);
 int			*ft_get_content(t_list **stack);
 int			ft_get_index_of_max(int *arr, int max);
 void		best_move_lis(t_list **stack);
+void		ft_push_to_b(t_list **stack_a, t_list **stack_b, int *a);
+void		ft_best_move_to_push_a(t_list **stack_a, t_list **stack_b);
+int			ft_up_steps(t_list *stack, int content);
+int			ft_down_steps(t_list *stack, int content);
+int			ft_abs(int num);
+int			**ft_malloc_steps(t_list *stack_b);
+void		ft_steps_b(t_list *stack_b, int **steps);
+void		ft_steps_a(t_list *stack_a, t_list *stack_b, int **steps);
+int			ft_compare_max_min(int i, t_list *stack_a, \
+			t_list *temp1, int **steps);
+int			*ft_samller_steps(int **steps, size_t size);
+int			*ft_find_samller_steps(int **steps, size_t size, \
+			int min, int *smaller);
+void		ft_free_steps(int **steps, size_t size);
+void		ft_do_moves(t_list **stack_a, t_list **stack_b, int *one_step);
+void		ft_do_moves_1(t_list **stack_a, t_list **stack_b, int *one_step);
+void		ft_init_0(int **steps, size_t num);
 
-
-void	ft_push_to_b(t_list **stack_a, t_list **stack_b, int *a);
-void	ft_best_move_to_push_a(t_list **stack_a, t_list **stack_b);
-int	ft_up_steps(t_list *stack, int content);
-int	ft_down_steps(t_list *stack, int content);
-int	ft_abs(int num);
-int	**ft_malloc_steps(t_list *stack_b);
-void	ft_steps_b(t_list *stack_b, int **steps);
-void	ft_steps_a(t_list *stack_a, t_list *stack_b, int **steps);
-int	ft_compare_max_min(int i, t_list *stack_a, t_list *temp1 , int **steps);
-int *ft_samller_steps(int **steps, size_t size);
-int	*ft_find_samller_steps(int **steps, size_t size, int min, int *smaller);
 #endif

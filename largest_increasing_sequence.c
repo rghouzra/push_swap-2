@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 03:18:23 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/08 16:23:35 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/10 19:14:40 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ int	*ft_get_content(t_list **stack)
 	i = 0;
 	content[i] = \
 	arr[ft_get_index_of_max(index_lis, ft_get_max_lis(index_lis, *stack))];
-	next_index = \
-	index_lis[ft_get_index_of_max(index_lis, ft_get_max_lis(index_lis, *stack))];
+	next_index = index_lis[ft_get_index_of_max \
+	(index_lis, ft_get_max_lis(index_lis, *stack))];
 	while (++i < ft_lstsize(*stack))
 	{
 		content[i] = arr[next_index];

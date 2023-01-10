@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:29:18 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/08 17:25:00 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/10 18:50:41 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,4 @@ int	ft_get_max(t_list *stack)
 		stack = stack->next;
 	}
 	return (max);
-}
-void	best_move_lis(t_list **stack)
-{
-	if (ft_is_up_down(*stack, ft_get_min(*stack)))
-		while (ft_get_min(*stack) != (*stack)->content)
-			ft_rotate_abr(stack, NULL, 'a');
-	else
-		while (ft_get_min(*stack) != (*stack)->content)
-			ft_reverse_rotate_abr(stack, NULL, 'a');
 }

@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:26:47 by bel-idri          #+#    #+#             */
-/*   Updated: 2023/01/09 04:57:26 by bel-idri         ###   ########.fr       */
+/*   Updated: 2023/01/10 19:16:31 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,30 @@ void	ft_sort(t_list **stack_a, t_list **stack_b)
 	a = ft_get_content(stack_a);
 	ft_push_to_b(stack_a, stack_b, a);
 	ft_best_move_to_push_a(stack_a, stack_b);
+	free(a);
 }
 
+void	ft_best_move_to_push_a(t_list **stack_a, t_list **stack_b)
+{
+	int	**steps;
+	int	*one_step;
+
+	while (ft_lstsize(*stack_b))
+	{
+		steps = ft_malloc_steps(*stack_b);
+		ft_steps_b(*stack_b, steps);
+		ft_steps_a(*stack_a, *stack_b, steps);
+		one_step = ft_samller_steps(steps, ft_lstsize(*stack_b));
+		ft_free_steps(steps, ft_lstsize(*stack_b));
+		ft_do_moves(stack_a, stack_b, one_step);
+		ft_do_moves_1(stack_a, stack_b, one_step);
+		ft_push_ab(stack_a, stack_b, 'a');
+		free(one_step);
+	}
+	if (ft_is_up_down(*stack_a, ft_get_min(*stack_a)))
+		while (ft_get_min(*stack_a) != (*stack_a)->content)
+			ft_rotate_abr(stack_a, stack_b, 'a');
+	else
+		while (ft_get_min(*stack_a) != (*stack_a)->content)
+			ft_reverse_rotate_abr(stack_a, stack_b, 'a');
+}
