@@ -29,6 +29,8 @@ int	main(int ac, char **av)
 			write(1, "OK\n", 3);
 		else
 			write(1, "KO\n", 3);
+		ft_free_stack(&stack_a);
+		ft_free_stack(&stack_b);
 		return (0);
 	}
 	ft_free_stack(&stack_a);
